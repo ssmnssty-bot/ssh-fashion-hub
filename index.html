@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSH - Style Status Hub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f8f9fa; color: #333; }
+        
+        /* Header & Navbar */
+        header { background: #111; color: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 22px; font-weight: bold; letter-spacing: 1px; }
+        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-size: 14px; }
+        .cart-icon { background: #e63946; padding: 5px 12px; border-radius: 20px; font-size: 14px; }
+
+        /* Banner Section */
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000') center/cover; height: 350px; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-size: 38px; margin-bottom: 10px; }
+        .hero p { font-size: 16px; margin-bottom: 20px; }
+
+        /* Products Grid */
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 30px; font-size: 26px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        
+        .product-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: center; padding-bottom: 15px; transition: 0.3s; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-card img { width: 100%; height: 240px; object-fit: cover; }
+        .product-title { font-size: 16px; margin: 12px 0 5px; font-weight: 600; }
+        .product-price { color: #e63946; font-weight: bold; font-size: 15px; margin-bottom: 12px; }
+        
+        .btn-order { background: #25D366; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; }
+        .btn-order:hover { background: #1eb854; }
+
+        /* Footer */
+        footer { background: #111; color: #888; text-align: center; padding: 20px; margin-top: 50px; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">SSH | Style Status Hub</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#products">Trending</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="cart-icon">Cart (<span id="cart-count">0</span>)</div>
+    </header>
+
+    <!-- Main Banner -->
+    <section class="hero">
+        <h1>STYLE THAT SPEAKS YOU</h1>
+        <p>Premium Streetwear & Modern Fashion</p>
+    </section>
+
+    <!-- Products Section -->
+    <div class="container" id="products">
+        <h2 class="section-title">Trending Now</h2>
+        <div class="products-grid">
+            
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=500" alt="Oversized T-Shirt">
+                <div class="product-title">Oversized Black Tee</div>
+                <div class="product-price">₹799</div>
+                <button class="btn-order" onclick="orderOnWhatsApp('Oversized Black Tee', '799')">Order on WhatsApp</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542272604-780c36856d62?q=80&w=500" alt="Denim Jeans">
+                <div class="product-title">Relaxed Fit Denim</div>
+                <div class="product-price">₹1,499</div>
+                <button class="btn-order" onclick="orderOnWhatsApp('Relaxed Fit Denim', '1499')">Order on WhatsApp</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=500" alt="Hoodie">
+                <div class="product-title">Streetwear Hoodie</div>
+                <div class="product-price">₹1,299</div>
+                <button class="btn-order" onclick="orderOnWhatsApp('Streetwear Hoodie', '1299')">Order on WhatsApp</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=500" alt="Jacket">
+                <div class="product-title">Urban Jacket</div>
+                <div class="product-price">₹1,999</div>
+                <button class="btn-order" onclick="orderOnWhatsApp('Urban Jacket', '1999')">Order on WhatsApp</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?q=80&w=500" alt="Sneakers">
+                <div class="product-title">Premium Sneakers</div>
+                <div class="product-price">₹2,499</div>
+                <button class="btn-order" onclick="orderOnWhatsApp('Premium Sneakers', '2499')">Order on WhatsApp</button>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=500" alt="Cap">
+                <div class="product-title">Trendy Baseball Cap</div>
+                <div class="product-price">₹599</div>
+                <button class="btn-order" onclick="orderOnWhatsApp('Trendy Baseball Cap', '599')">Order on WhatsApp</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 Style Status Hub (SSH). All rights reserved. | Premium Streetwear & Modern Fashion
+    </footer>
+
+    <!-- JavaScript code for order button -->
+    <script>
+        // WHATSAPP NUMBER (Country Code '91' ke saath)
+        const myPhoneNumber = "919876543210"; 
+
+        let cartCount = 0;
+
+        function orderOnWhatsApp(productName, price) {
+            cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
+
+            // WhatsApp Message Text
+            let message = `Hello SSH Team! I want to order:\n\n*Product:* ${productName}\n*Price:* ₹${price}\n\nPlease share the payment and delivery details.`;
+            
+            // Redirect to WhatsApp
+            let whatsappURL = `https://wa.me/${myPhoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
